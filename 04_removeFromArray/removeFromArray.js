@@ -1,14 +1,16 @@
 const removeFromArray = function(array, ...itemsToBeRemoved) {
-    for (let i = 0; i < itemsToBeRemoved.length; i++) {
-        for (let j = 0; j < array.length; j++) {
-            if (array[j] === itemsToBeRemoved[i]) {
-                array.splice(j, 1);
-                j--;
-            }
+    let newArray = [];
+    array.forEach((item) => {
+        if (!itemsToBeRemoved.includes(item)) {
+            newArray.push(item);
         }
-    }
-    return array;
-};
+    })
+    return newArray;
+
+    /*var removeFromArray = function(array, ...args) {
+        return array.filter(val => !args.includes(val))
+    }*/
+}
 
 // Do not edit below this line
 module.exports = removeFromArray;
