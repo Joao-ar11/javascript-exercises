@@ -7,19 +7,11 @@ const subtract = function(firstNumber, secondNumber) {
 };
 
 const sum = function(numberList) {
-	let sum = 0;
-  for (let i in numberList) {
-    sum += numberList[i];
-  }
-  return sum;
+	return numberList.length ? numberList.reduce((sum, number) => sum += number) : 0;
 };
 
 const multiply = function(numberList) {
-  let result = 1;
-  for (let i in numberList) {
-    result *= numberList[i];
-  }
-  return result;
+  return numberList.length ? numberList.reduce((result, number) => result *= number) : 0;
 };
 
 const power = function(firstNumber, secondNumber) {
