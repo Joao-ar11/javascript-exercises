@@ -1,11 +1,10 @@
-const fibonacci = function(number) {
-    number = +number;
-    if (number <= 0) return "OOPS";
+const fibonacci = function(count) {
+    if (count < 0) return "OOPS";
+    if (count == 0) return 0;
     let currentNumber = 1;
     let pastNumber = 0;
-    let temp;
-    for (let i = 1; i < number; i++) {
-        temp = currentNumber;
+    for (let i = 1; i < count; i++) {
+        const temp = currentNumber;
         currentNumber += pastNumber;
         pastNumber = temp;
     }
