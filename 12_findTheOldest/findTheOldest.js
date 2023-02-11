@@ -1,18 +1,17 @@
 const findTheOldest = function(people) {
-    const currentYear = (new Date()).getFullYear();
-    let oldest = {yearOfBirth: currentYear, yearofDeath: currentYear};
-    people.forEach(person => {
-        if (!("yearOfDeath" in person)) {
-            person.yearOfDeath = currentYear;
-        }
-        if ((person.yearOfDeath - person.yearOfBirth) - (oldest.yearofDeath - oldest.yearOfBirth) > 0) {
-            oldest.name = person.name;
-            oldest.yearOfBirth = person.yearOfBirth;
-            oldest.yearofDeath = person.yearOfDeath;
-        }
-    });
-    return oldest;
-};
+    return people.reduce((oldest, currentPerson) => {
+        const oldestAge = getAge(oldest.yearOfBirth, oldest.yearOfDeath);
+        const currentAge = getAge(currentPerson.yearOfBirth, currentPerson.yearOfDeath);
+        return oldestAge < currentAge ? currentPerson : oldest;
+      })
+    };
+    
+    const getAge = function(birth, death) {
+      if (!death) {
+        death = new Date().getFullYear();
+      }
+      return death - birth;
+    };
 
 // Do not edit below this line
 module.exports = findTheOldest;
